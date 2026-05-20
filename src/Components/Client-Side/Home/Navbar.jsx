@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -74,11 +75,11 @@ export default function Navbar() {
       <div className="hidden md:block bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <nav aria-label="Main navigation" className="flex items-center gap-8 text-[19px] text-[#191919]">
-            <a href="/" className="hover:text-gray-500">Home</a>
-            <a href="/about" className="hover:text-gray-500">About</a>
-            <a href="/resources" className="hover:text-gray-500">Resources</a>
-            <a href="/quote" className="hover:text-gray-500">Quote</a>
-            <a href="/contact" className="hover:text-gray-500">Contact Us</a>
+       <Link href="/" className="hover:text-gray-500">Home</Link>
+<Link href="/about" className="hover:text-gray-500">About</Link>
+<Link href="/resources" className="hover:text-gray-500">Resources</Link>
+<Link href="/quote" className="hover:text-gray-500">Quote</Link>
+<Link href="/contact" className="hover:text-gray-500">Contact Us</Link>
           </nav>
           <div className="text-[19px] text-[#191919]">Office Hours: M-F 7am-5pm</div>
         </div>

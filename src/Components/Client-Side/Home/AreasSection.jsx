@@ -36,7 +36,7 @@ export default function AreasSection() {
           <img
             src="/Images/usa.webp"
             alt="HB Transportation coverage map across Western United States"
-            className="mt-8 w-full "
+            className="mt-8  w-full h-full "
             loading="lazy"
           />
           <div className="flex items-center justify-center gap-6 mt-6 opacity-60">
