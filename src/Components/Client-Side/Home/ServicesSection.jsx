@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import ServicesSlider from "./Servicesslider.client";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
   {
@@ -49,6 +53,10 @@ const schemaOrg = {
 };
 
 export default function ServicesAndDriver() {
+  // Scroll trigger ref — section ke andar lagaya
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
     <>
       <script
@@ -56,7 +64,10 @@ export default function ServicesAndDriver() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
       />
 
-      <div className="relative">
+      <div className="relative overflow-hidden">
+        {/* Invisible trigger div — section ke top pe */}
+        <div ref={sectionRef} className="absolute top-0 left-0 w-full h-1 pointer-events-none" />
+
         <section className="bg-[#1F1F1F] min-h-150 md:min-h-70 py-12">
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
             <div>
@@ -79,8 +90,13 @@ export default function ServicesAndDriver() {
           </div>
         </section>
 
-        {/* Mobile truck image */}
-        <div className="block md:hidden w-75 h-75 z-10 absolute right-0 top-92 rounded-lg overflow-hidden">
+        {/* Mobile truck */}
+        <motion.div
+          className="block md:hidden w-75 h-75 z-10 absolute right-0 top-92 rounded-lg overflow-hidden"
+          initial={{ x: "100%" }}
+          animate={{ x: isInView ? 0 : "100%" }}
+          transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+        >
           <Image
             src="/Images/trukkkkkk4.webp"
             alt="Professional HB Transportation truck driver ready for duty"
@@ -88,10 +104,15 @@ export default function ServicesAndDriver() {
             className="rounded-lg object-cover"
             loading="eager"
           />
-        </div>
+        </motion.div>
 
-        {/* Desktop truck image */}
-        <div className="hidden md:block w-100 h-100 z-10 absolute right-0 bottom-145 rounded-lg overflow-hidden">
+        {/* Desktop truck */}
+        <motion.div
+          className="hidden md:block w-100 h-100 z-10 absolute right-0 bottom-145 rounded-lg overflow-hidden"
+          initial={{ x: "100%" }}
+          animate={{ x: isInView ? 0 : "100%" }}
+          transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+        >
           <Image
             src="/Images/trukkkkkk3.webp"
             alt="Professional HB Transportation truck driver ready for duty"
@@ -99,10 +120,9 @@ export default function ServicesAndDriver() {
             className="rounded-lg object-cover"
             loading="eager"
           />
-        </div>
+        </motion.div>
 
         <section id="services" aria-label="Our Services" className="bg-white relative py-14">
-          {/* Screen reader accessible service list */}
           <ul className="sr-only">
             {services.map((s) => (
               <li key={s.title}>
