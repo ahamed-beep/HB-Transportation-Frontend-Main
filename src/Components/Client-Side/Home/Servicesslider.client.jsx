@@ -50,7 +50,7 @@ export default function ServicesSlider({ services }) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className=" mx-2 md:mx-5">
 
       <div className="flex items-start justify-between mb-8 px-6">
         <div>
@@ -85,7 +85,7 @@ export default function ServicesSlider({ services }) {
         </div>
       </div>
 
-      <div ref={wrapperRef} className="overflow-hidden pl-6">
+      <div ref={wrapperRef} className="overflow-hidden md:pl-6">
         <div
           ref={sliderRef}
           onScroll={handleScroll}
