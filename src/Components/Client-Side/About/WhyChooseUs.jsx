@@ -31,7 +31,6 @@ export default function WhyChooseUs() {
               alt="Truck on highway"
               className="w-full h-64 sm:h-80 md:h-95 object-cover rounded-md block"
             />
-            {/* ✅ sirf yeh — image ke baad normal flow mein, marginTop negative */}
             <div
               className="bg-[#D9D9D9] h-7 rounded-xl mx-auto"
               style={{ marginTop: "-13px", width: "86%" }}
@@ -43,11 +42,7 @@ export default function WhyChooseUs() {
             {features.map((f, i) => (
               <div
                 key={i}
-                className={`flex items-center gap-4 border border-white/10 px-5 py-6 ${
-                  i === 2
-                    ? "bg-[#FFFFFF]/15 border-2 border-[#FFFFFF]"
-                    : "bg-[#FFFFFF]/2"
-                }`}
+                className="group flex items-center gap-4 border border-white/10 px-5 py-6 cursor-pointer transition-all duration-200 hover:bg-[#FFFFFF]/15 hover:border-2 hover:border-[#FFFFFF] bg-[#FFFFFF]/2"
               >
                 <Icon name={f.i} />
                 <span className="text-sm md:text-base font-manrope text-neutral-200">

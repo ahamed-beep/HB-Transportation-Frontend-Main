@@ -32,7 +32,7 @@ function CardIcon({ icon, isWhite }) {
   );
   return (
     <div className={cls}>
-      <Timer className="h-8" />
+      <Timer className="h-8 text-[#979797] " />
     </div>
   );
 }
