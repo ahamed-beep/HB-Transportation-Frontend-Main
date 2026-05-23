@@ -1,6 +1,8 @@
 "use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 export default function HeroSection() {
   return (
@@ -44,7 +46,7 @@ export default function HeroSection() {
           Refrigerated, produce, and dry freight transportation across the Western United States
         </motion.p>
 
-        <motion.a
+        <MotionLink
           href="/quote"
           className="mt-8 text-sm md:mt-12 inline-block px-4.5 md:px-8 py-2 rounded-full bg-white text-[#1E1E1E] font-manrope font-semibold hover:bg-gray-200"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -54,7 +56,7 @@ export default function HeroSection() {
           whileTap={{ scale: 0.97 }}
         >
           Get a Quote
-        </motion.a>
+        </MotionLink>
 
         <motion.div
           className="md:mt-0 mt-10 md:absolute text-xl font-manrope md:right-22 md:text-right"

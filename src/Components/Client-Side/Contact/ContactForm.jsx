@@ -29,7 +29,7 @@ export default function ContactForm() {
                 placeholder="Full Name"
                 autoComplete="name"
                 required
-                className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition"
+                className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-[#737373]  focus:outline-none focus:border-gray-400 transition"
               />
 
               <label className="sr-only" htmlFor="phone">Phone Number</label>
@@ -39,7 +39,7 @@ export default function ContactForm() {
                 name="phone"
                 placeholder="Phone Number"
                 autoComplete="tel"
-                className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition"
+                className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-[#737373] focus:outline-none focus:border-gray-400 transition"
               />
             </div>
 
@@ -51,7 +51,7 @@ export default function ContactForm() {
               placeholder="Email Address"
               autoComplete="email"
               required
-              className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition"
+              className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-[#737373]  focus:outline-none focus:border-gray-400 transition"
             />
 
             <label className="sr-only" htmlFor="message">Message</label>
@@ -61,7 +61,7 @@ export default function ContactForm() {
               placeholder="Message"
               rows={7}
               required
-              className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-gray-400 focus:outline-none focus:border-gray-400 transition"
+              className="w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15  px-6 py-4 text-md text-[#FFFFFF]/40 placeholder-[#737373]  focus:outline-none focus:border-gray-400 transition"
             />
 
             <button

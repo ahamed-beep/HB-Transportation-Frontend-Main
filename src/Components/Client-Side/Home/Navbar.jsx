@@ -34,13 +34,17 @@ export default function Navbar() {
           {/* LOGO */}
           <div className="flex items-center gap-4">
             <div className="w-[63px] h-[60px] rounded-full flex items-center justify-center font-serif italic font-bold text-lg">
+              <Link href="/" >
               <img src="/Images/logo.webp" alt="HB Transportation Logo" />
+              </Link>
+
             </div>
           </div>
 
           {/* DESKTOP: contact info */}
           <div className="hidden md:flex items-center gap-8 text-[#FFFFFF]">
             <span className="flex text-[16px] items-center gap-2">
+
               <img src="/Images/phone.webp" className="h-[20px]" alt="" aria-hidden="true" />
               +1 (530) 673-2116
             </span>
@@ -54,10 +58,9 @@ export default function Navbar() {
 
           {/* DESKTOP: Track + Drive buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="/track" className="px-5 py-2 rounded-full bg-[#FFFFFF] text-[#1E1E1E] text-[16px] font-medium hover:bg-gray-200">Track</a>
-            <a href="/drive" className="px-5 py-2 rounded-full bg-[#FFFFFF] text-[#1E1E1E] text-[16px] font-medium hover:bg-gray-200">Drive</a>
+            <Link href="/under-construction" className="px-5 py-2 rounded-full bg-[#FFFFFF] text-[#1E1E1E] text-[16px] font-medium hover:bg-gray-200">Track</Link>
+            <Link href="/under-construction" className="px-5 py-2 rounded-full bg-[#FFFFFF] text-[#1E1E1E] text-[16px] font-medium hover:bg-gray-200">Drive</Link>
           </div>
-
           {/* MOBILE: Hamburger button */}
           <button
             className="md:hidden text-white p-2"
@@ -103,7 +106,9 @@ export default function Navbar() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-700">
+              <Link href="/">
               <img src="/Images/logo.webp" alt="HB Transportation Logo" className="h-[48px]" />
+              </Link>
               <button onClick={closeMenu} aria-label="Close navigation menu" className="text-white p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -120,14 +125,14 @@ export default function Navbar() {
                 { href: "/quote", label: "Quote" },
                 { href: "/contact", label: "Contact Us" },
               ].map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
                   className="text-white text-[17px] py-3 border-b border-neutral-800 hover:text-gray-300 transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -148,12 +153,12 @@ export default function Navbar() {
 
             {/* Track + Drive buttons */}
             <div className="mt-auto px-6 pb-8 flex flex-col gap-3">
-              <a href="/track" className="text-center py-3 rounded-full bg-white text-[#1E1E1E] text-[15px] font-medium hover:bg-gray-200 transition-colors">
+              <Link href="/under-construction" className="text-center py-3 rounded-full bg-white text-[#1E1E1E] text-[15px] font-medium hover:bg-gray-200 transition-colors">
                 Track
-              </a>
-              <a href="/drive" className="text-center py-3 rounded-full bg-white text-[#1E1E1E] text-[15px] font-medium hover:bg-gray-200 transition-colors">
+              </Link>
+              <Link href="/under-construction" className="text-center py-3 rounded-full bg-white text-[#1E1E1E] text-[15px] font-medium hover:bg-gray-200 transition-colors">
                 Drive
-              </a>
+              </Link>
             </div>
           </div>
         </>

@@ -2,6 +2,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 import { useRef } from "react";
 
 export default function ReadyCTA() {
@@ -49,18 +50,18 @@ export default function ReadyCTA() {
             Let&apos;s get your shipment on the road quickly and safely.
           </p>
           <div className="md:mt-6 mt-10 justify-center md:justify-start flex gap-4">
-            <a
+            <Link
               href="/quote"
               className="px-4 py-2 font-semibold rounded-full bg-white text-[#1E1E1E] font-manrope hover:bg-gray-200"
             >
               Get a Quote
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="px-4 py-2 rounded-full bg-neutral-800 text-white font-manrope font-medium border border-neutral-600 hover:bg-neutral-700"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </motion.div>

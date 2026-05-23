@@ -42,7 +42,7 @@ export default function CTASection() {
             Call Us
           </Link>
           <Link
-            href="/track"
+            href="/under-construction"
             className="bg-white/8 border font-manrope border-white/40 text-[#FAFAFA] px-6 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-black transition"
           >
             Track Shipment
