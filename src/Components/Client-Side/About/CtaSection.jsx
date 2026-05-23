@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function CtaSection() {
   return (
     <section className="bg-[#000000]">
@@ -7,8 +9,8 @@ export function CtaSection() {
           Whether you need fast delivery or temperature-controlled transport, we're here to get it done right.
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
-          <a href="/quote" className="bg-white text-[#1E1E1E] font-semibold rounded-full px-6 py-2.5 text-sm font-medium hover:bg-neutral-200 transition">Get a Quote</a>
-          <a href="/contact" className="bg-neutral-800 text-[#FAFAFA] border border-white/10 rounded-full px-6 py-2.5 text-sm font-manrope font-medium hover:bg-neutral-700 transition">Contact Us</a>
+          <Link href="/quote" className="bg-white text-[#1E1E1E] font-semibold rounded-full px-6 py-2.5 text-sm font-medium hover:bg-neutral-200 transition">Get a Quote</Link>
+          <Link href="/contact" className="bg-neutral-800 text-[#FAFAFA] border border-white/10 rounded-full px-6 py-2.5 text-sm font-manrope font-medium hover:bg-neutral-700 transition">Contact Us</Link>
         </div>
       </div>
     </section>

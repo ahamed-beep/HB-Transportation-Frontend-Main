@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import ServicesSlider from "./Servicesslider.client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 const services = [
   {
@@ -80,12 +81,12 @@ export default function ServicesAndDriver() {
                 opportunities, flexible schedules, and full support to help you
                 grow.
               </p>
-              <a
-                href="/drive"
+              <Link
+                href="/under-construction"
                 className="md:mt-6 mt-12 px-4 py-3 rounded-full bg-white text-[#1E1E1E] font-semibold font-manrope inline-flex items-center gap-2 hover:bg-gray-200"
               >
                 Apply as a Driver <ArrowUpRight className="h-5 w-5" />
-              </a>
+              </Link>
             </div>
           </div>
         </section>
