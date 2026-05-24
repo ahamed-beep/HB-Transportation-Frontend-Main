@@ -2,6 +2,7 @@
 
 import { CalendarRange } from "lucide-react";
 import { useState } from "react";
+import api from "@/lib/axios";
 
 const inputBase =
   "w-full bg-[#FFFFFF]/2 border border-[#FFFFFF]/15 px-6 py-6 text-md text-[#FFFFFF]/40 placeholder-[#FFFFFF]/40 focus:outline-none focus:border-gray-400 transition";
@@ -16,13 +17,33 @@ export default function QuoteForm() {
     weight: "", temperature: "", fullName: "", phone: "",
     email: "", company: "", notes: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Quote request:", form);
-    alert("Quote request submitted!");
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      await api.post("/quotes", form);
+      setSuccess(true);
+      setForm({
+        pickup: "", delivery: "", pickupDate: "", freightType: "",
+        weight: "", temperature: "", fullName: "", phone: "",
+        email: "", company: "", notes: "",
+      });
+    } catch (err) {
+      setError(
+        err?.response?.data?.message || "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,11 +57,22 @@ export default function QuoteForm() {
           Fill out the details below and our team will get back to you. <br /> shortly with the best possible rate.
         </p>
 
-        {/* Shipping Details */}
+        {success && (
+          <div className="mt-6 px-4 py-3 rounded-md bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-manrope">
+            Your quote request has been submitted! Check your email for confirmation.
+          </div>
+        )}
+
+        {error && (
+          <div className="mt-6 px-4 py-3 rounded-md bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-manrope">
+            {error}
+          </div>
+        )}
+
         <h3 className="text-lg font-manrope mt-12 mb-4">Shipping Details:</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="pickup" placeholder="Pickup Location" value={form.pickup} onChange={handleChange} className={inputBase} />
-          <input type="text" name="delivery" placeholder="Delivery Location" value={form.delivery} onChange={handleChange} className={inputBase} />
+          <input type="text" name="pickup" placeholder="Pickup Location" value={form.pickup} onChange={handleChange} required className={inputBase} />
+          <input type="text" name="delivery" placeholder="Delivery Location" value={form.delivery} onChange={handleChange} required className={inputBase} />
         </div>
         <div className="relative mt-4">
           <input
@@ -49,6 +81,7 @@ export default function QuoteForm() {
             placeholder="Pickup Date"
             value={form.pickupDate}
             onChange={handleChange}
+            required
             onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => { if (!e.target.value) e.target.type = "text"; }}
             className={inputBase}
@@ -56,24 +89,21 @@ export default function QuoteForm() {
           <CalendarIcon />
         </div>
 
-        {/* Freight Details */}
         <h3 className="text-lg mt-8 mb-4">Freight Details:</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="freightType" placeholder="Freight Type" value={form.freightType} onChange={handleChange} className={inputBase} />
-          <input type="text" name="weight" placeholder="Weight / Load Size" value={form.weight} onChange={handleChange} className={inputBase} />
+          <input type="text" name="freightType" placeholder="Freight Type" value={form.freightType} onChange={handleChange} required className={inputBase} />
+          <input type="text" name="weight" placeholder="Weight / Load Size" value={form.weight} onChange={handleChange} required className={inputBase} />
         </div>
-        <input type="text" name="temperature" placeholder="Temperature Requirements" value={form.temperature} onChange={handleChange} className={`${inputBase} mt-4`} />
+        <input type="text" name="temperature" placeholder="Temperature Requirements" value={form.temperature} onChange={handleChange} required className={`${inputBase} mt-4`} />
 
-        {/* Contact Info */}
         <h3 className="text-lg mt-8 mb-4">Contact Information:</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="fullName" placeholder="Full Name" value={form.fullName} onChange={handleChange} className={inputBase} />
-          <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} className={inputBase} />
+          <input type="text" name="fullName" placeholder="Full Name" value={form.fullName} onChange={handleChange} required className={inputBase} />
+          <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className={inputBase} />
         </div>
-        <input type="email" name="email" placeholder="Email Address" value={form.email} onChange={handleChange} className={`${inputBase} mt-4`} />
-        <input type="text" name="company" placeholder="Company Name" value={form.company} onChange={handleChange} className={`${inputBase} mt-4`} />
+        <input type="email" name="email" placeholder="Email Address" value={form.email} onChange={handleChange} required className={`${inputBase} mt-4`} />
+        <input type="text" name="company" placeholder="Company Name" value={form.company} onChange={handleChange} required className={`${inputBase} mt-4`} />
 
-        {/* Notes */}
         <h3 className="text-lg mt-8 mb-4">Additional Notes:</h3>
         <textarea
           name="notes"
@@ -86,13 +116,13 @@ export default function QuoteForm() {
 
         <button
           type="submit"
-          className="mt-8 bg-white text-[#383838] font-semibold text-sm font-medium px-6 py-2.5 rounded-full hover:bg-gray-200 transition"
+          disabled={loading}
+          className="mt-8 bg-white text-[#383838] font-semibold text-sm font-medium px-6 py-2.5 rounded-full hover:bg-gray-200 transition disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Get My Quote
+          {loading ? "Submitting..." : "Get My Quote"}
         </button>
       </form>
 
-      {/* Feature cards */}
       <div className="md:mx-30 grid grid-cols-1 md:grid-cols-3 gap-3 mt-8">
         {["Fast response within hours", "Reliable and on-time delivery", "Real-time tracking available"].map((text) => (
           <div key={text} className="bg-[#2F2F2F] border border-neutral-700 rounded-lg py-8 px-4 flex flex-col items-center text-center">
